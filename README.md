@@ -1,1 +1,1 @@
-This repository is for project on alternative splicicng isoforms
+This repository is for project on alternative splicing isoforms
