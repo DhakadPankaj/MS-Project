@@ -1,0 +1,16 @@
+
+for i in 'ls -1 *PRANK.aln'
+do
+
+modeltest-ng -i $i -o mod.txt 
+
+mkdir 
+##To extract model from log file 
+model=awk '{if($1=="BIC"){print $2}}' *log| tail -1
+
+~/raxml-ng_v0.9.0_linux_x86_64/raxml-ng --all --msa $i --model $model --bs-trees 1000 --threads 1 --prefix boot 
+
+~/raxml-ng_v0.9.0_linux_x86_64/raxml-ng --consense MR --tree boot.raxml.bootstraps --prefix cons
+
+
+done
