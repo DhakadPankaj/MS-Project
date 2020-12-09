@@ -1,0 +1,16 @@
+for f in {1..10}
+do
+
+echo -e '#!/bin/bash\n#\n#SBATCH --job-name="hyphy_'$f'"\n#SBATCH --output='$f'_logs.txt\n#SBATCH --nodes=1\n#SBATCH --ntasks=1\n#SBATCH --mail-type=ALL\n#SBATCH --mail-user=pankajd16@iiserb.ac.in\n#SBATCH --time=300:00:00\n./hyphy.sh'  "$f" > "$f"_batch
+
+done
+
+
+for i in DBNL EPB41L3 ITPR1 MYO1B OGT PLCD1 PPP1R12B RAP1GDS1 RBM7 SERBP1 SPAG9 TRIM33 YBX3 ATF7IP FN1 MAT2B NEBL PALM PLEC RBM10 RTN1 SERPINB13 SPTAN1 TSC22D1 ZC3HAV1 MATN2 NSFL1C PCBP2 PNKD PTBP2 RBM23 SBSN SLC9A3R2 SPTBN1 UBQLN1 CRMP1 IMMT MKI67 NUMA1 PDLIM5 POSTN PUF60 RBM26 SCAMP3 SORBS1 STX16 VAPA
+do
+sbatch "$i"_batch
+done
+
+
+
+for i in {0..10}; do export i; sbatch batch; done

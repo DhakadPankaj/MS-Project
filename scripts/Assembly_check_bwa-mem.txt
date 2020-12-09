@@ -1,0 +1,32 @@
+#contig- NC_023653.1   
+
+#position of DNM1 gene- 9874098..9927737
+
+#downloading SRA reads
+cat SRA_URLs.txt | xargs -n 1 -P 8 wget -q
+
+
+#generating index file for bwa aligner
+~/bwa/bwa index GCF_000409795.2_Chlorocebus_sabeus_1.1_genomic.fna
+
+#bwa mem aligner (mapping reads on the assembly)
+~/bwa/bwa mem GCF_000409795.2_Chlorocebus_sabeus_1.1_genomic.fna SRR6109156_1.fastq SRR6109156_2.fastq  > SRR6109156_assembly_check.sam
+
+
+#Extracting mapped reads (in sam format) from region of interest
+awk '/^@PG/{print $0}/^@SQ/{if($2 == "SN:NC_023653.1"){print $0}}{if($3 == "NC_023653.1" && $4>=9874098 && $4<=9927737){print $0}}' 
+
+
+##Sorting_sam_file
+awk 'NR <= 2 {print; next} {print | "sort -k4 -n"}' SRR6109148_DNM1_contig.sam >SRR6109148_DNM1_contig_sorted.sam
+
+
+
+
+#Position of exon 20 of DNM1 gene 
+#9878974-9879215
+ 
+
+
+ 
+ 

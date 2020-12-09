@@ -1,0 +1,14 @@
+#Read quality check from fastq file 
+ids=$(cat SRX496601.sam|awk '/SRA:/{if($4 >= 2000){gsub("SRA:","",$1);print substr($1, 1, length($1)-2)}}')
+for i in $(echo $ids)
+do 
+grep -A3 $i SRR1221278_1.fastq >> RQ.fq 
+grep -A3 $i SRR1221278_2.fastq >> RQ.fq
+done
+
+ids=$(cat KW6G7VK801R-Alignment.sam|awk '/SRA:/{if($4 >= 2000){gsub("SRA:","",$1);print substr($1, 1, length($1)-2)}}')
+for i in $(echo $ids)
+do
+grep -A3 $i SRR6109156_1.fastq >> RQ2.fq
+grep -A3 $i SRR6109156_2.fastq >> RQ2.fq
+done

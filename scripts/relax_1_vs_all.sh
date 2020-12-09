@@ -43,7 +43,7 @@ cat "$i" > focal_"$focal"_relax
 cat "$i"temp.tree >> focal_"$focal"_relax
 workdir=`pwd`
 #Create a config file to run HYPHY
-echo -ne "1\n7\n"$workdir"/focal_"$focal"_relax\n2\n2\n" > relax.config
+echo -e "1\n7\n"$workdir"/focal_"$focal"_relax\n2\n2\n" > relax.config
 #Run HYPHYMP
 HYPHYMPI < relax.config > "$workdir"/results_"$i"/focal_"$focal"_relax.txt
 
