@@ -1,1 +1,1 @@
-Scripts used in MS thesis
+Scripts used in MS thesis project
