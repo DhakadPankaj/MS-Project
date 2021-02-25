@@ -1,3 +1,5 @@
+#Used for multiple corrections of p-values obtained.
+
 table <- commandArgs(trailingOnly=TRUE)
 p_val <- read.table(table)
 p_vec <- as.vector(t(p_val)[4,])
