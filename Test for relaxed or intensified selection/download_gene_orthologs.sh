@@ -1,3 +1,5 @@
+#!/bin/bash
+
 for i in $(cat Gene_sybol_Id_transcripts.txt|cut -d $'\t' -f 1)
 
 do
