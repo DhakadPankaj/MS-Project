@@ -1,3 +1,5 @@
+#Used to keep the specified tips in phylogenetic tree of primates obtained from Time Tree (http://www.timetree.org/).
+
 library(ape)
 Tl<-commandArgs(trailingOnly=TRUE)
 S <-scan(Tl, character())
