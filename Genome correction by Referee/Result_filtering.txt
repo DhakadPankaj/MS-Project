@@ -1,23 +1,4 @@
-samtools faidx reference.fa
 
-java -jar ~/picard/build/libs/picard.jar CreateSequenceDictionary R=reference.fa O=reference.dict
-
-java -jar ~/picard/build/libs/picard.jar ReplaceSamHeader I=reads-mapped.sam HEADER=reference.dict O=reads-mapped-hd.sam
-
-samtools view -b reads-mapped-hd.sam > reads-mapped-hd.bam
-
-samtools sort reads-mapped-hd.bam -o reads-mapped-hd-sorted.bam
-
-~/angsd/./angsd -GL 2 -doMaf 1 -i reads-mapped-hd-sorted.bam -ref reference.fa -minQ 0 -doGlf 4 -doMajorMinor 1 -out reads-gl
-
-nohup python ~/referee-1.1.21/referee.py -gl reads-SRR6109156-gl.glf.gz -ref GCF_000409795.2_Chlorocebus_sabeus_1.1_genomic.fna -p 16 --correct -o referee_SRR6109156 &
-
-~/Downloads/referee-1.1.21
-
-/home/nagarjun/referee-1.1.21
-
-
-cat referee_SRR6109148.txt| awk '{if($4!=""){print $0}}'| awk '{if($1=="NC_023653.1" && $2>=9878974 && $2<=9879215){print $0}}'
 
 #Referee-result-wrap.sh
 for f in `seq 30 5 90`
