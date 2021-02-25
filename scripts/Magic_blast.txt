@@ -1,3 +1,0 @@
-makeblastdb -in my_reference.fa -out my_reference -parse_seqids -dbtype nucl
-
-magicblast -sra SRX8006878 -db  -gzo -out elephantus_vs_chloro  -outfmt sam 

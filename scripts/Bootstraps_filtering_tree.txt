@@ -1,8 +1,0 @@
-nw_topology boot.raxml.bootstraps | nw_order - | sort | uniq -c | sort -n >> Reordered_topology.txt
-
-
- nw_topology boot.raxml.bootstraps | nw_order - | sort | uniq -c | sort -n | tail -3 | awk '{print $2}' >> top_topology.nw
-
-
-nw_topology boot.raxml.bootstraps | nw_order - | sort | uniq -c | sort -n | grep "1 " | shuf -n 3 |awk '{print $2}' >> bad_topology.nw
-
