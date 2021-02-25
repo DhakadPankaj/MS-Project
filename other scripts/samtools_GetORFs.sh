@@ -1,3 +1,7 @@
+#!/bin/bash
+
+#Extract ORFs from blast output (SAM file).
+
 for i in *.fa
 do 
 samtools faidx $i
